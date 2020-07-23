@@ -31,7 +31,11 @@ $this->load->view('header');
 	        				<td><?php echo $pic['email'] ?></td>
 	        				<td><?php echo $pic['phone'] ?></td>
 	        				<td><?php echo $pic['address'] ?></td>
-	        				<td></td>
+	        				<td>
+	        					<a href="#" onclick="return confirm('Delete <?php echo $pic['name']  ?> Are you sure ? ')" class="delete-pic" data-id="<?php echo $pic['id'] ?>">
+	        						<span class="glyphicon glyphicon-trash"></span>	
+	        					</a>
+	        				</td>
 	        			</tr>
 	        			<?php
 	        		}

@@ -27,8 +27,19 @@ class Company extends CI_Controller
                        'logo'          => (isset( $this->upload_data['logo']['file_name']) ? $this->upload_data['logo']['file_name'] : ''),
                       'pic'          => $this->input->post('pic'),
                 );
-        echo "<br /> <pre>",print_r($data),"</pre>";
-        $this->company_model->insert($data);
+        // echo "<br /> <pre>",print_r($data),"</pre>";
+
+		if($this->company_model->insert($data))
+			echo json_encode(array('result' => 'success'));
+		else
+			echo json_encode(array('result' => 'failed'));
+	}
+
+	public function delete()
+	{
+		$entry_id = $this->input->post('entry_id');
+		$this->company_model->delete($entry_id);
+		echo json_encode(array('result' => 'success'));
 	}
 }
 ?>

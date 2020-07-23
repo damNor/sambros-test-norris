@@ -11,8 +11,7 @@
 		
 		$(document).ready(function()
 		{
-			$('#company').DataTable();
-			$('#pic').DataTable();
+			$('.table').DataTable();
 
 			$('#add-company').on('click',function(e){
 				e.preventDefault();
@@ -30,7 +29,8 @@
 					beforeSend:function(){
 						$('#insert-company').val("Insert to db...");
 					},
-					success:function(data){
+					success:function(data)
+					{
 						console.log('data',data);
 						$('#form-add-company')[0].reset();
 						$('#myModal').modal('hide');
@@ -66,20 +66,47 @@
 				});
 			});
 
-				$.getJSON('http://localhost/codeIgniter-3_1_10/home/get',function( data ) {
-					var items = [];
-					$.each( data, function( key, value ) 
-					{
-						console.log(value);
-						items.push("<li id='"+key+"' >" + value.title+ "&nbsp;|&nbsp;"+value.date_added+"" + value.file_name+" &nbsp;|&nbsp;"+value.date_added+"</li>");
-					});
-					$("<ul/>", {
-						"class":"list-files",
-						html: items.join( "" )
-					}).appendTo("#uploaded-files")
+			$('.delete-company').on('click',function(e){
+				e.preventDefault();
+				$.ajax({
+					url:'company/delete',
+					method: 'post',
+					data: {'entry_id': $(this).data('id')} ,
+					success:function(data){
+						console.log('data',data);
+						window.location.reload();
+					}
 				});
+			});
 
-					$('#fileUploadForm').submit(function(event){
+			$('.delete-pic').on('click',function(e){
+				e.preventDefault();
+				$.ajax({
+					url:'pic/delete',
+					method: 'post',
+					data: {'entry_id': $(this).data('id')} ,
+					success:function(data){
+						console.log('data',data);
+						window.location.reload();
+					}
+				});
+			});
+
+			$.getJSON('http://localhost/codeIgniter-3_1_10/home/get',function( data ) 
+			{
+				var items = [];
+				$.each( data, function( key, value ) 
+				{
+					console.log(value);
+					items.push("<li id='"+key+"' >" + value.title+ "&nbsp;|&nbsp;"+value.date_added+"" + value.file_name+" &nbsp;|&nbsp;"+value.date_added+"</li>");
+				});
+				$("<ul/>", {
+					"class":"list-files",
+					html: items.join( "" )
+				}).appendTo("#uploaded-files")
+			});
+
+			$('#fileUploadForm').submit(function(event){
 				event.preventDefault();
 
 				var form = $('#fileUploadForm')[0];

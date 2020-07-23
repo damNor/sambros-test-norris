@@ -24,10 +24,18 @@ class Pic extends CI_Controller
                       'email'          => $this->input->post('email'),
                       'address'          => $this->input->post('address'),
                 );
-        echo "<br /> <pre>",print_r($data),"</pre>";
-        $this->pic_model->insert($data);
+        // echo "<br /> <pre>",print_r($data),"</pre>";
+        if($this->pic_model->insert($data))
+			echo json_encode(array('result' => 'success'));
+		else
+			echo json_encode(array('result' => 'failed'));
 	}
- 
-	 
+
+	public function delete()
+	{
+		$entry_id = $this->input->post('entry_id');
+		$this->pic_model->delete($entry_id);
+		echo json_encode(array('result' => 'success'));
+	}
 }
 ?>

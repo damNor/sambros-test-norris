@@ -27,12 +27,16 @@ $this->load->view('header');
 	        		{
 	        			?>
 	        			<tr>
-	        				<td><?php echo $company['name'] ?></td>
-	        				<td><?php echo $company['phone'] ?></td>
-	        				<td><?php echo $company['address'] ?></td>
-	        				<td><?php echo $company['logo'] ?></td>
-	        				<td><?php echo $company['pic_name'] ?></td>
-	        				<td></td>
+	        				<td><?php echo $company['name'] ?> </td>
+	        				<td><?php echo $company['phone'] ?> </td>
+	        				<td><?php echo $company['address'] ?> </td>
+	        				<td><?php echo $company['logo'] ?> </td>
+	        				<td><?php echo $company['pic_name'] ?> </td>
+	        				<td>
+	        					<a href="#" onclick="return confirm('Delete <?php echo $company['name']  ?> Are you sure ? ')" class="delete-company" data-id="<?php echo $company['id'] ?>">
+	        						<span class="glyphicon glyphicon-trash"></span>	
+	        					</a>
+	        				</td>
 	        			</tr>
 	        			<?php
 	        		}
