@@ -21,10 +21,10 @@ class pic_model extends CI_Model {
         return ($this->db->affected_rows() > 0 ) ? TRUE : FALSE;
     }
 
-    function get(){
+    function get($status = 1){
         $this->db->select('*');
         $this->db->from('pic');
-        $this->db->where('status', 1);// data active
+        $this->db->where('status', $status);// data active
         $query = $this->db->get();
         return $query->result_array();   
     }

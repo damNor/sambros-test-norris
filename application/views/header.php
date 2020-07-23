@@ -33,11 +33,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
 		        <li ><!-- class="active" -->
-		        <a href="<?php echo base_url('company'); ?>">Company 
-		        <!-- <span class="sr-only">(current)</span> -->
-		        </a>
 		        </li>
-		        <li><a href="<?php echo base_url('pic'); ?>">PIC</a></li>
+
+				 <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Company <span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		           	<li><a href="<?php echo base_url('company'); ?>">Data</a></li>
+		            <li><a href="<?php echo base_url('company/restore'); ?>">Restore</a></li>
+		          </ul>
+		        </li>
+
+				<li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PIC <span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="<?php echo base_url('pic'); ?>">Data</a></li>
+		            <li><a href="<?php echo base_url('pic/restore'); ?>">Restore</a></li>
+		          </ul>
+		        </li>
+
+		        
 		      </ul>
 		      
 		       

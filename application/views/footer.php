@@ -92,6 +92,32 @@
 				});
 			});
 
+			$('.restore-company').on('click',function(e){
+				e.preventDefault();
+				$.ajax({
+					url: base_url+'/restore_data',
+					method: 'post',
+					data: {'entry_id': $(this).data('id')} ,
+					success:function(data){
+						console.log('data',data);
+						window.location.reload();
+					}
+				});
+			});
+
+			$('.restore-pic').on('click',function(e){
+				e.preventDefault();
+				$.ajax({
+					url: base_url+'/restore_data',
+					method: 'post',
+					data: {'entry_id': $(this).data('id')} ,
+					success:function(data){
+						console.log('data',data);
+						window.location.reload();
+					}
+				});
+			});
+
 			$.getJSON('http://localhost/codeIgniter-3_1_10/home/get',function( data ) 
 			{
 				var items = [];
