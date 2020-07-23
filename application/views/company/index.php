@@ -9,35 +9,37 @@ $this->load->view('header');
 	<div class="col-md-12">
 		<!--  -->
 		<table id="company" class="table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>Logo</th>
-                <th>PIC</th>
-            </tr>
-        </thead>
-        <tbody>
-        	<?php 
-        	if(is_array($company_data))
-        	{
-        		foreach ($company_data as $company) 
-        		{
-        			?>
-        			<tr>
-        				<td><?php echo $company['name'] ?></td>
-        				<td><?php echo $company['phone'] ?></td>
-        				<td><?php echo $company['address'] ?></td>
-        				<td><?php echo $company['logo'] ?></td>
-        				<td><?php echo $company['pic_name'] ?></td>
-        			</tr>
-        			<?php
-        		}
-        	}
-        	?>
-        </tbody>
-    </table>
+	        <thead>
+	            <tr>
+	                <th>Name</th>
+	                <th>Phone</th>
+	                <th>Address</th>
+	                <th>Logo</th>
+	                <th>PIC</th>
+	                <th>Action</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	        	<?php 
+	        	if(is_array($company_data))
+	        	{
+	        		foreach ($company_data as $company) 
+	        		{
+	        			?>
+	        			<tr>
+	        				<td><?php echo $company['name'] ?></td>
+	        				<td><?php echo $company['phone'] ?></td>
+	        				<td><?php echo $company['address'] ?></td>
+	        				<td><?php echo $company['logo'] ?></td>
+	        				<td><?php echo $company['pic_name'] ?></td>
+	        				<td></td>
+	        			</tr>
+	        			<?php
+	        		}
+	        	}
+	        	?>
+	        </tbody>
+    	</table>
 		<!--  -->
 	</div>
 </div>
