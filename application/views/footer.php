@@ -19,15 +19,10 @@
 				// alert('add-company');
 				$('#myModal').modal('show');
 			});
-			$('#add-pic').on('click',function(e){
-				e.preventDefault();
-				alert('add-pic');
-			});
 			
 			$('#form-add-company').on('submit',function(e){
-				var table = $('#company').DataTable();
 				e.preventDefault();
-				alert('submit');
+				// alert('submit');
 				$.ajax({
 					url:'company/create',
 					method: 'post',
@@ -38,8 +33,35 @@
 					success:function(data){
 						console.log('data',data);
 						$('#form-add-company')[0].reset();
-						$('#myModal').hide();
-						table.data.reload();
+						$('#myModal').modal('hide');
+						window.location.reload();
+						// $('#company').DataTable().ajax.reload();
+					}
+				});
+			});
+
+			$('#add-pic').on('click',function(e){
+				e.preventDefault();
+				// alert('add-pic');
+				$('#myModal').modal('show');
+			});
+
+			$('#form-add-pic').on('submit',function(e){
+				// alert('add-pic');
+				e.preventDefault();
+				// alert('submit');
+				$.ajax({
+					url:'pic/create',
+					method: 'post',
+					data:$('#form-add-pic').serialize(),
+					beforeSend:function(){
+						$('#insert-pic').val("Insert to db...");
+					},
+					success:function(data){
+						console.log('data',data);
+						$('#form-add-pic')[0].reset();
+						$('#myModal').modal('hide');
+						window.location.reload();
 					}
 				});
 			});

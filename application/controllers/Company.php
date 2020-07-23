@@ -12,8 +12,9 @@ class Company extends CI_Controller
 	{
 		$this->load->helper('url');
 		$data['base_url'] = base_url('upload');
+		$data['company_data'] = $this->company_model->get();
 		$data['pic_data'] = $this->pic_model->dropdown();
-		// print_r($data['pic_data']);
+		// echo "<pre>",print_r($data['company_data']),"</pre>";
 		$this->load->view('company/index',$data);
 	}
 

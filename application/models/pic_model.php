@@ -21,12 +21,12 @@ class pic_model extends CI_Model {
         return ($this->db->affected_rows() > 0 ) ? TRUE : FALSE;
     }
 
-    function get($entry_id,$team_id){
+    function get(){
         $this->db->select('*');
         $this->db->from('pic');
         $this->db->where('status', 1);// data active
         $query = $this->db->get();
-        return $query->row_object();   
+        return $query->result_array();   
     }
 
     function dropdown(){
@@ -37,7 +37,7 @@ class pic_model extends CI_Model {
         return $query->result_array();   
     }
 
-    function delete($entry_id,$team_id){
+    function delete($entry_id){
         $this->db->where('id',$entry_id);
         $this->db->update('pic',array('status'=>0));
     }

@@ -21,16 +21,16 @@ class company_model extends CI_Model {
         return ($this->db->affected_rows() > 0 ) ? TRUE : FALSE;
     }
 
-    function get($entry_id,$team_id){
-        $this->db->select('*');
+    function get(){
+        $this->db->select('company.id, company.name,company.phone,pic.name as pic_name,company.address,company.logo');
         $this->db->from('company');
-        $this->db->where('status', 1);// data active
-        $this->db->where('id',$entry_id);// by id
+        $this->db->join('pic','company.pic = pic.id');
+        $this->db->where('company.status', 1);// data active
         $query = $this->db->get();
-        return $query->row_object();   
+        return $query->result_array();   
     }
 
-    function delete($entry_id,$team_id){
+    function delete($entry_id){
         $this->db->where('id',$entry_id);
         $this->db->update('company',array('status'=>0));
     }
