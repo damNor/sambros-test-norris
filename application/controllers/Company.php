@@ -38,16 +38,17 @@ class Company extends CI_Controller
                       'pic'          	=> $this->input->post('pic'),
                 );
         // echo "<br /> <pre>",print_r($data),"</pre>";
-
-		if($this->company_model->insert($data))
-			echo json_encode(array('result' => 'success'));
+		if($this->company_model->check_pic($this->input->post('pic')))
+		{
+			if($this->company_model->insert($data))
+			echo json_encode(array('result' => 'success', 'message' => 'Insert success'));
+			else
+				echo json_encode(array('result' => 'failed', 'message' => 'Insert Failed'));	
+		}
 		else
-			echo json_encode(array('result' => 'failed'));
-	}
+			echo json_encode(array('result' => 'failed','message' => 'PIC already more than 3 Company'));	
 
-	private function check_pic()
-	{
-		// $data = $this->db->select;
+		
 	}
 
 	public function delete()

@@ -31,10 +31,15 @@
 					},
 					success:function(data)
 					{
-						console.log('data',data);
+						var obj = JSON.parse(data);
+						console.log('data',obj.message);
+
+						alert(obj.message);	
 						$('#form-add-company')[0].reset();
 						$('#myModal').modal('hide');
-						window.location.reload();
+						
+						if(obj.result == 'success')
+							window.location.reload();
 						// $('#company').DataTable().ajax.reload();
 					}
 				});

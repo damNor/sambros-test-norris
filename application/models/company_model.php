@@ -35,5 +35,15 @@ class company_model extends CI_Model {
         $this->db->update('company',array('status'=>0));
     }
 
+    function check_pic($pic)
+    {
+         $data = $this->db->query("Select count(pic) as total_pic from company where pic = '$pic' ");
+
+        if($data->row_object()->total_pic <= 3)
+            return true;
+        else
+            return false;
+    }
+
 }
 ?>
